@@ -21,8 +21,8 @@
 
 // Scripted Pipeline
 node {
-    def dockerImage = 'node:16-buster-slim'
-    docker.image(dockerImage).withRun('-p 3000:3000') {
+    // def dockerImage = 'node:16-buster-slim'
+    // docker.image(dockerImage).withRun('-p 3000:3000') {
         stage('Build') {
             echo 'Running npm install'
             sh 'bash -c "npm install"'
@@ -31,5 +31,5 @@ node {
             echo 'Running test.sh'
             sh './jenkins/scripts/test.sh'
         }
-    }
+    // }
 }
