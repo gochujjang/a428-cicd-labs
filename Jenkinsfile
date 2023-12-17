@@ -21,15 +21,18 @@
 
 // Scripted Pipeline
 node {
-    // def dockerImage = 'node:16-buster-slim'
-    // docker.image(dockerImage).withRun('-p 3000:3000') {
+    def dockerImage = 'node:16-buster-slim'
+    def dockerPort = '-p 3000:3000'
         stage('Build') {
-            echo 'Running npm install'
-            sh 'npm install'
+            docker.image(dockerImage).withRun(dockerPort) {
+                echo 'Running npm install'
+                sh 'npm install'
+            }
         }
         stage('Test') {
-            echo 'Running test.sh'
-            sh './jenkins/scripts/test.sh'
+            docker.image(dockerImage).withRun(dockerPort) {
+                echo 'Running test.sh'
+                sh './jenkins/scripts/test.sh'
+            }
         }
-    // }
 }
