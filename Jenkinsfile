@@ -4,13 +4,6 @@ node {
     triggers {
         pollSCM('*/2 * * * *') 
     }
-    stage('Checkout'){
-        docker.image(dockerImage).inside(dockerPort) {
-            echo 'Checkout scm'
-            checkout scm
-        }
-    }
-
     stage('Build') {
         docker.image(dockerImage).inside(dockerPort) {
             echo 'Running npm install'
