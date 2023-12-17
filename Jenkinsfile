@@ -25,9 +25,9 @@ node {
     def dockerPort = '-p 3000:3000'
 
 
+
     stage('Build') {
         docker.image(dockerImage).inside(dockerPort) {
-            checkout scm
             echo 'Running npm install'
             sh 'npm install'
         }
