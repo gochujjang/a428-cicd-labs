@@ -2,7 +2,7 @@ node {
     def dockerImage = 'node:16-buster-slim'
     def dockerPort = '-p 3000:3000'
     triggers {
-        pollSCM('H/2 * * * *') 
+        pollSCM('*/2 * * * *') 
     }
     stage('Checkout'){
         docker.image(dockerImage).inside(dockerPort) {
