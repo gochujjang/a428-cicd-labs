@@ -21,8 +21,11 @@
 
 // Scripted Pipeline
 node {
-    docker.image('node:16-buster-slim').withRun('-p 3000:3000') {
+    def dockerImage = 'node:16-buster-slim'
+    docker.image(dockerImage).withRun('-p 3000:3000') {
         stage('Build') {
+            sh 'node -v'
+            sh 'npm -v'
             sh 'npm install'
         }
         stage('Test') {
