@@ -25,7 +25,7 @@ node {
     // docker.image(dockerImage).withRun('-p 3000:3000') {
         stage('Build') {
             echo 'Running npm install'
-            sh 'bash -c "npm install"'
+            sh 'npm install'
         }
         stage('Test') {
             echo 'Running test.sh'
