@@ -24,9 +24,11 @@ node {
     def dockerImage = 'node:16-buster-slim'
     docker.image(dockerImage).withRun('-p 3000:3000') {
         stage('Build') {
-            sh 'bash -l -c "npm install"'
+            echo 'Running npm install'
+            sh 'bash -c "npm install"'
         }
         stage('Test') {
+            echo 'Running test.sh'
             sh './jenkins/scripts/test.sh'
         }
     }
