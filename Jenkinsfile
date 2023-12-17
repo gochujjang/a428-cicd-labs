@@ -4,6 +4,7 @@ node {
 
     stage('Build') {
         docker.image(dockerImage).inside(dockerPort) {
+            checkout scm
             echo 'Running npm install'
             sh 'npm install'
         }
