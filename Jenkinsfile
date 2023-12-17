@@ -24,7 +24,6 @@ node {
     def dockerImage = 'node:16-buster-slim'
     docker.image(dockerImage).withRun('-p 3000:3000') {
         stage('Build') {
-            sh 'apt-get update && apt-get install -y nodejs npm'
             sh 'npm install'
         }
         stage('Test') {
