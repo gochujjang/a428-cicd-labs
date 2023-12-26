@@ -14,6 +14,7 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
           hai namamu siapa, namaku siapa yaa
         </p>
+        <tictactoe />
       </div>
     );
   }
